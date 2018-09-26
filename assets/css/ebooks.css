@@ -1,0 +1,66 @@
+body{
+    margin:0;
+    padding: 0;
+    background: url('../img/banner.jpg');
+    background-size: cover;
+    font-family: sans-serif;
+    background-repeat: no-repeat;
+}
+.ebox{
+    width: 320px;
+    height: 200px;
+    background: black;
+    color:white;
+    top: 60%;
+    left: 50%;
+    opacity: .8;
+    position:absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+    opacity: .8;
+}
+.ebox h1{
+    margin: 0;
+    padding-top:0px;
+    padding-bottom: 25px;
+    text-align: center;
+    font-size: 30px;
+   
+}
+.ebox p{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+.ebox select{
+    position:absolute
+    margin-bottom: 20px;
+    background:black;
+    color:white;
+}
+.ebox input[type="submit"]
+{
+    border:none;
+    border-radius: 20px;
+    outline:none;
+    height: 40px;
+    background: red;
+    color: white;
+    width:100%;
+    font-size: 18px;
+}
+.ebox input[type="submit"]:hover{
+    cursor: pointer;
+    background: yellow;
+    color:black;
+}
+.ebox a{
+    text-decoration: none;
+    font-size: 15px;
+    line-height: 20px;
+    color: white;
+}
+.ebox a:hover{
+    color: yellow;
+}
