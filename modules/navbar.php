@@ -1,7 +1,6 @@
-<!DOCTYPE html>
+<?php session_start();?>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -70,12 +69,21 @@
             <i class="fa fa-bars menu" aria-hidden="true"></i>
         </div>
         <ul>
-            <li><a href="http://localhost/SakecStudentsPortal/index1.php">Home</a></li>
+            <li><a href="http://localhost/SakecStudentsPortal/index.php">Home</a></li>
             <li><a href="#">About</a>
             <li><a href="#">FAQ's</a>
             <li><a href="modules/ebooks.php">Ebooks</a>
-            <li style="float:right;"><a href="http://localhost/SakecStudentsPortal/modules/login.php">Login</a>
-            <li style="float:right;"><a href="http://localhost/SakecStudentsPortal/modules/signup.php">Signup</a>
+            <?php if(!isset($_SESSION['emailid'])){?>
+                <li style="float:right;">
+                    <a href="http://localhost/SakecStudentsPortal/modules/login.php">Login</a>
+                <li style="float:right;">
+                    <a href="http://localhost/SakecStudentsPortal/modules/signup.php">Signup</a>
+            <?php }else{ ?>
+            <li style="float:right;">
+                <a href="http://localhost/SakecStudentsPortal/modules/logout.php">Logout</a>
+            <li style="float:right;">
+                <a href="http://localhost/SakecStudentsPortal/modules/profile.php">Hello <?php echo $_SESSION['fname'];?></a>
+                <?php } ?>
         </ul>
         
     </nav>

@@ -14,7 +14,7 @@
         <div class="loginbox" style="width: 380px;height: 380px;top:50%;">
             <h1>Sign up</h1>
             <form action="../assets/php/signup1.php" method="post">
-                <p>Sent on Your Email id:&ensp;xyz@sakec.ac.in</p>
+                <p>Sent on Your Email id:&ensp;<?php echo $_SESSION['temailid']?>@sakec.ac.in</p>
                 <br>
                 <br>
                 <p>Enter OTP:</p>

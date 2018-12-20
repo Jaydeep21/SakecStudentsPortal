@@ -10,11 +10,11 @@
             <?php include('navbar.php');?>
             <div class="loginbox">
                 <h1 >Login Here</h1>
-                <form onsubmit="" action="">
+                <form method="post" action="../assets/php/login.php">
                     <p>Email id:</p>
-                    <input type="text" placeholder="Enter your email" class="emailid" required>
+                    <input type="text" placeholder="Enter your email" name="emailid" style="width:62%;" required>@sakec.ac.in
                     <p>Password:</p>
-                    <input type="password" placeholder="Enter Password" class="password" id="pass" required><br><br>
+                    <input type="password" placeholder="Enter Password" name="password" id="pass" required><br><br>
                     <input type="submit"value="Login" ><br>
                     <a href="#">Forgot Password</a>
                 </form>

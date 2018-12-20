@@ -1,7 +1,6 @@
 <?php
 
 include('navbar.php');
-session_start();
 
 ?>
 <html>
@@ -30,9 +29,13 @@ session_start();
                 <input type="text" placeholder="Enter Registraion Number" name="rno" required>
                 <p>Smart Card Number:</p>
                 <input type="text" placeholder="Enter Smart Card Number" name="sno" required>
+                
                 <p>Gender:</p><br>
                 <p>Male:<input type='radio' name='gender' value='m' required></p>
                 <p>Female:<input type='radio' name='gender' value='f' required></p>
+                <p>Role:</p><br>
+                <p>Student:<input type='radio' name='role' value='student' required></p>
+                <p>Staff:<input type='radio' name='role' value='teacher' required></p>
                 <input type='submit' id="subbtn" value="Next">
             </form>
         </div>

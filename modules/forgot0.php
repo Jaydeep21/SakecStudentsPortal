@@ -1,4 +1,5 @@
-<?php session_start(); 
+<?php 
+include('navbar.php');
 $email=$_SESSION['em'];
 ?>
 <html>

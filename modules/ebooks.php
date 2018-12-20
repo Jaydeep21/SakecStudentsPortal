@@ -1,3 +1,8 @@
+<?php
+
+include('navbar.php');
+
+?>
 <html>
 <head>
     <title>Ebooks</title>

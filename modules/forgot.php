@@ -1,4 +1,9 @@
-    <html>
+<?php
+
+include('navbar.php');
+
+?>
+<html>
         <head>
             <title>Login</title>
             
