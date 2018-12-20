@@ -9,28 +9,22 @@
     $regno=$_POST['rno'];
     $smno=$_POST['sno'];
     $gender=$_POST['gender'];
+    $role=$_POST['role'];
 
-    $_SESSION['fname'] = $fname;
-    $_SESSION['lname'] = $lname;
-    $_SESSION['emailid'] = $email;
-    $_SESSION['phone'] = $phone;
-    $_SESSION['rno'] = $regno;
-    $_SESSION['sno'] = $smno;
-    $_SESSION['gender'] = $gender;
-
-    $dbpass="jaydeep";
-    $dbname="sakecstudentsportal";
-    $dbuser="root";
-    $dbhost="localhost";
+    $_SESSION['tfname'] = $fname;
+    $_SESSION['tlname'] = $lname;
+    $_SESSION['temailid'] = $email;
+    $_SESSION['tphone'] = $phone;
+    $_SESSION['trno'] = $regno;
+    $_SESSION['tsno'] = $smno;
+    $_SESSION['tgender'] = $gender;
+    $_SESSION['trole']=$role;
+    
+    include('connection.php');
     
     $a=rand(1000,1000000);
     $_SESSION['random']=$a;
    $result="";
-    $conn=mysqli_connect($dbhost,$dbuser,$dbpass,$dbname);
-    if(!$conn){
-        $result="Connection error".mysqli_connect_error();
-        echo $result;
-    }
     $email="select * from signup where email='$email'";
     
     if(!mysqli_query($conn,$email)){
@@ -66,6 +60,7 @@
                 echo $result;
             }
             else{
+                
                 header("Location: http://localhost/SakecStudentsPortal/modules/signup1.php");
             }
             

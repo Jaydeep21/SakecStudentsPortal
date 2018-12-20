@@ -2,12 +2,13 @@ body{
     margin:0;
     padding: 0;
     font-family: sans-serif;
-    background: url('../img/banner.jpg');
+    background: url('../img/books8.jpg');
     height: 100%;
     width: 100%;
     background-size: cover;
-    position: absolute;
+    background-attachment: fixed;
     background-repeat: no-repeat;
+    
 }
 .loginbox{
     
