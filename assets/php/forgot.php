@@ -36,7 +36,7 @@ $conn=mysqli_connect($dbhost,$dbuser,$dbpass,$dbname);
             $mail->SMTPAuth=true;
             $mail->SMTPSecure='tls';
             $mail->Username='jaydeepdharamsey21@gmail.com';
-            $mail->Password='Jinali@29';
+            $mail->Password='';
             
             $mail->setFrom('jaydeepdharamsey21@gmail.com');
             $mail->addAddress($em."@sakec.ac.in");
