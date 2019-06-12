@@ -301,7 +301,7 @@ p{font-size:30px;
 				<h5>Borrowing is much better than begging,just as lending with interest is much better than stealing.
 				</h5>
 				<div class="post-s">
-					<a href="javascript:void(0)"  style="text-decoration:none"><h2 button id="myBtn" onclick="return kholModal(a);"> BORROW</h2></a>
+					<a href="modules/borrow.php"  style="text-decoration:none"><h2 button id="myBtn" > BORROW</h2></a>
 					
 				</div>
 			</div>
@@ -312,92 +312,11 @@ p{font-size:30px;
                     <h5>Giving is not just about making a donation. It is about making a difference.
                     </h5>
                     <div class="post-s">
-                        <a href="javascript:void(1)" style="text-decoration:none"><h2 button id="myBtn1" onclick="return kholModal1(b);" > DONATE</h2></a>
+                        <a href="modules/donate.php" style="text-decoration:none"><h2 button id="myBtn1"  > DONATE</h2></a>
                     </div>
             </div>
 		</div>
     </div>
-    <!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content" >
-    <span class="close">&times;</span>
-    
-    <!--span class="close">&times;</span-->
-    <div><a href="modules/drafter.php" style="text-decoration:none;"><center><p>DRAFTER</p></center></a></div>
-    <div><a href="modules/donate_calculator.php" style="text-decoration:none;"><center><p>CALCULATOR</p></center></a></div>
-    <div><a href="modules/drafter.php" style="text-decoration:none;"><center><p>CONTAINER</p></center></a></div>
-    <div><a href="modules/drafter.php" style="text-decoration:none;"><center><p>BOOKS</p></center></a></div>
-  
-  
-</div>
-
-<div id="myModal1" class="modal">
-
-<!-- Modal content -->
-<div class="modal-content" >
-  <span class="close1">&times;</span>
-  
-  <!--span class="close">&times;</span-->
-  <div><a href="modules/donate_calculator.php" style="text-decoration:none;"><center><p>DRAFTER</p></center></a></div>
-  <div><a href="modules/drafter.php" style="text-decoration:none;"><center><p>CALCULATOR</p></center></a></div>
-  <div><a href="modules/drafter.php" style="text-decoration:none;"><center><p>CONTAINER</p></center></a></div>
-  <div><a href="modules/drafter.php" style="text-decoration:none;"><center><p>BOOKS</p></center></a></div>
-
-
-</div>
-
-</div>
-
-    <script>
-// Get the modal
-var modal = document.getElementById('myModal');
-
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
-btn.onclick=function modalKhol(a) {
-    
-    modal.style.display = "block";
-}
-span.onclick = function() { 
-    modal.style.display = "none";
-}
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-</script>
-<script>
-// Get the modal
-var modal1 = document.getElementById('myModal1');
-
-// Get the button that opens the modal
-var btn1 = document.getElementById("myBtn1");
-
-// Get the <span> element that closes the modal
-var span1 = document.getElementsByClassName("close1")[0];
-
-// When the user clicks the button, open the modal 
-btn1.onclick=function modalKhol1(b) {
-    
-    modal.style.display = "block";
-}
-span1.onclick = function() { 
-    modal1.style.display = "none";
-}
-window1.onclick = function(event) {
-    if (event.target == modal1) {
-        modal1.style.display = "none";
-    }
-}
-</script>
     <script>
         // Select all links with hashes
 $('a[href*="#"]')
