@@ -25,6 +25,11 @@ include('../assets/php/connection.php');
 			padding:10px;
 		}
 	</style>
+	<script type="text/javascript">
+		$('#delete').click(function(){
+
+		})
+	</script>
 </head>
 <body>
 	Hello, <?php echo $_SESSION['fname']." ".$_SESSION['lname']?>
@@ -52,7 +57,7 @@ include('../assets/php/connection.php');
 						<td><?php echo $row['name'];?></td>
 						<td><?php echo $row['model'];?></td>
 						<td><?php echo $row['date'];?></td>
-						<td><button class="btn-danger">Delete</button></td>
+						<td><button class="btn-danger" value="delete" name="delete">Delete</button></td>
 					</tr>
 					
 					<?php
@@ -83,7 +88,8 @@ include('../assets/php/connection.php');
 						<td><?php echo $row['name'];?></td>
 						<td><?php echo $row['item'];?></td>
 						<td><?php echo $row['date'];?></td>
-						<td><button class="btn-danger">Delete</button></td>
+						<td><input type="button" onclick="location.href='../assets/php/delete.php?delete=<?php echo $row['id'] ?>';" value="Delete" name="delete" id="delete" /></td>
+						
 					</tr>
 					
 					<?php
@@ -93,7 +99,7 @@ include('../assets/php/connection.php');
 			}
 		}
 	?>
-	Borrowed
+	
 
 </body>
 </html>
