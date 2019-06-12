@@ -29,7 +29,7 @@
         $_SESSION['role']=$role;
        
 
-        header("Location: http://localhost/SakecStudentsPortal/modules/signup.php");
+        header("Location: http://localhost/SakecStudentsPortal/modules/login.php");
     }
 
 ?>
