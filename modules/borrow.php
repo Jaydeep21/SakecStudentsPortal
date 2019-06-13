@@ -50,11 +50,7 @@ include('../assets/php/connection.php');
             
         }
 	</style> 
-	<script type="text/javascript">
-		$('#interested').click(function(){
-
-		})
-	</script>
+    
 </head>
 <body><hr>
 <?php
@@ -81,7 +77,17 @@ while ($row  = mysqli_fetch_assoc($result)) {
                 Cost: <?php echo $row['cost'];?><br>
                 Uploaded On: <?php echo $row['date']?>
             </p>
-            <input type="button" onclick="location.href='../assets/php/interested.php?item_id=<?php echo $row['id'] ?>&donator_id=<?php echo $row['donator_id'] ?>';" value="Interested" name="interested" id="interested" />
+            <?php 
+            $id = $row['id'];
+            $query = "select * from requests where item_id=$id";
+            $result1 = mysqli_query($conn,$query);
+            if(mysqli_num_rows($result1)>0){
+
+            ?>
+            <button type="button" class="btn btn-danger" disabled>Already Requested</button>
+            
+            <?php }else{?>
+            <button type="button" class="btn btn-success" ><a href="../assets/php/interested.php?item_id=<?php echo $row['id']; ?>&donator_id=<?php echo $row['donator_id']; ?>" name="interested" id="interested" ></a>Interested</button><?php } ?>
         <hr>
 	</div>
 

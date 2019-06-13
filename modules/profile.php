@@ -34,38 +34,14 @@ include('../assets/php/connection.php');
 <body>
 	Hello, <?php echo $_SESSION['fname']." ".$_SESSION['lname']?>
 	Donations
+	<table>
+					<tr>
+						<th>Item Donated</th>
+						<th>Donation Date on</th>
+						<th>Delete Donation Request</th>
+						<th>Response</th>
+					</tr>
 	<?php
-		$smno=$_SESSION['smno'];
-		$qry="select * from calculator where smno='$smno'";
-		$result=mysqli_query($conn,$qry);
-		if(!$result)
-		{
-			echo"query me gadbad";
-		}
-		else{
-			if(mysqli_num_rows($result)>0){
-				?>
-				<table>
-					<tr>
-						<th colspan="4">Calculator Donated</th>
-					</tr>
-					
-				<?php
-			while($row=mysqli_fetch_assoc($result)){
-				?>
-					<tr>
-						<td><?php echo $row['name'];?></td>
-						<td><?php echo $row['model'];?></td>
-						<td><?php echo $row['date'];?></td>
-						<td><button class="btn-danger" value="delete" name="delete">Delete</button></td>
-					</tr>
-					
-					<?php
-				} ?>
-				</table><br><br> 
-				<?php
-			}
-		}
 		$smno=$_SESSION['smno'];
 		$qry="select * from drafter where smno='$smno'";
 		$result=mysqli_query($conn,$qry);
@@ -75,31 +51,65 @@ include('../assets/php/connection.php');
 		}
 		else{
 			if(mysqli_num_rows($result)>0){
-				?>
-				<table>
-					<tr>
-						<th colspan="4">Drafter or Container Donated</th>
-					</tr>
-					
-				<?php
+				
 			while($row=mysqli_fetch_assoc($result)){
 				?>
 					<tr>
-						<td><?php echo $row['name'];?></td>
 						<td><?php echo $row['item'];?></td>
 						<td><?php echo $row['date'];?></td>
 						<td><input type="button" onclick="location.href='../assets/php/delete.php?delete=<?php echo $row['id'] ?>';" value="Delete" name="delete" id="delete" /></td>
-						
+						<?php
+							$item_id = $row['id'];
+							$query = "select * from requests where item_id='$item_id'";
+							$result1= mysqli_query($conn,$query);
+							while ($row1=mysqli_fetch_assoc($result1)) {
+								?>
+									<td><input type="button" onclick="location.href='display_profile.php?borrower_id=<?php echo $row1['borrower_id'] ?>';" value="Agree" name="agree" id="agree" />
+									<a href="../assets/php/disagree_request.php?item_id=<?php echo $item_id;?>&borrower_id=<?php echo $row1['borrower_id']; ?>">Disagree</a></td>
+
+								<?php } ?>
+
 					</tr>
 					
 					<?php
 				} ?>
 				</table> 
+				<br><br>
+				Borrowed Items
 				<?php
-			}
-		}
+				} }
 	?>
-	
+	<br><br>
+		Borrowed Items
+		<table>
+			 		<tr>
+			 		<th>Donated By</th>
+			 		<th>Item Name</th>
+			 		<th>Date</th>
+			 		<th>Delete Borrowing Request</th>
+			 		</tr>
+		<?php
+		$user_id = $_SESSION['userid'];
+		$qry1 = "select * from requests where borrower_id='$user_id'"; 
+		$result2 = mysqli_query($conn,$qry1);
+		while($rows = mysqli_fetch_assoc($result2)) {
+			$item_id = $rows1['item_id'];
+			$querys = "select * from drafter where id='$item_id'";
+			$results = mysqli_query($conn,$querys);
+			while ($rows2 = mysqli_fetch_assoc($results)) {
+			 	?>
 
+			 	<tr>
+			 		<td><?php echo $rows2['name'];?></td>
+			 		<td><?php echo $rows2['item'];?></td>
+			 		<td><?php echo $rows2['date'];?></td>
+			 		<td><a href="../assets/php/disagree_request.php?item_id=<?php echo $item_id;?>&borrower_id=<?php echo $user_id; ?>">Delete Borrow Request</a></td>
+			 	</tr>
+			 	
+			 	<?php
+			 } 
+		}
+		?>
+</table>
 </body>
 </html>
