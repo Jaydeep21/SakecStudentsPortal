@@ -64,7 +64,7 @@ include('../assets/php/connection.php');
 							$result1= mysqli_query($conn,$query);
 							while ($row1=mysqli_fetch_assoc($result1)) {
 								?>
-									<td><input type="button" onclick="location.href='display_profile.php?borrower_id=<?php echo $row1['borrower_id'] ?>';" value="Agree" name="agree" id="agree" />
+									<td><input type="button" onclick="location.href='display_profile.php?borrower_id=<?php echo $row1['borrower_id'] ?>&item_id=<?php echo $row['id'] ?>';" value="Agree" name="agree" id="agree" />
 									<a href="../assets/php/disagree_request.php?item_id=<?php echo $item_id;?>&borrower_id=<?php echo $row1['borrower_id']; ?>">Disagree</a></td>
 
 								<?php } ?>
