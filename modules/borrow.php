@@ -1,37 +1,45 @@
 <?php 
 
+include('../assets/php/connection_pdo.php');
 include('navbar.php');
-include('../assets/php/connection.php');
-
-?>
-
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-	<meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-	<style type="text/css">
-		body{
+    <title></title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <script type="text/javascript" src="https://code.jquery.com/ui/jquery-ui-git.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/jquery-ui-git.css">
+    <style type="text/css">
+        body{
             display: block;
             overflow-x: hidden;
         }
-		img
+        img
         {
             position: relative;
-            left:10px;
-            width:250px;
-            height:200px;
+            left:100px;
+            width:270px;
+            height:250px;
             float:left;
             border:1px solid black;
         }
         .product{
             position: relative;
-            left:20px;
+            left:120px;
         }
        
         @media only screen and (max-width: 700px){
@@ -49,48 +57,106 @@ include('../assets/php/connection.php');
             }
             
         }
-	</style> 
-    
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            filter_data();
+            function filter_data(){
+                $('.filter_data').html('<div id="loading" style=""></div>' );
+                var action = 'fetch_data';
+                var minimum_price = $('#hidden_minimum_price').val();
+                var maximum_price = $('#hidden_maximum_price').val();
+                var quality = get_filter('quality');
+                var item = get_filter('item');
+                $.ajax({
+                    url:"fetch_data.php",
+                    method:"POST",
+                    data:{action:action,minimum_price:minimum_price,maximum_price:maximum_price, quality:quality, item:item },
+                    success:function(data){
+                        $('.filter_data').html(data);
+                    }
+                });
+            }
+            function get_filter(class_name){
+                var filter = [];
+                $('.'+class_name+':checked').each(function(){
+                    filter.push($(this).val());
+                });
+                return filter;
+            }
+            $('.common_selector').click(function(){
+                filter_data();
+            });
+
+            $('#price_range').slider({
+                range:true,
+                min:0,
+                max:800,
+                values:[0,800],
+                step:100,
+                stop:function(event, ui){
+                    $('#price_show').html(ui.values[0]+'-'+ui.values[1]);
+                    $('#hidden_minimum_price').val(ui.values[0]);
+                    $('#hidden_maximum_price').val(ui.values[1]);
+                    filter_data();
+                }
+            });
+        });
+    </script>
 </head>
-<body><hr>
-<?php
-
-$qry = "select * from drafter";
-
-
-
-if(isset($_GET['item'])){
-	$item = $_GET['item'];
-	$qry = "select * from drafter where item='$item'";
-}
-$result = mysqli_query($conn,$qry);
-while ($row  = mysqli_fetch_assoc($result)) {
-	# code...
-
-?>
-<img src="<?php echo $row['image'];?>">
-	<div class="product">
-		<h1><?php echo $row['item'];?></h1></a>
-            <p><bold>Quality:</bold>&ensp;<?php 
-                echo ($row['quality']);?><br>
-                Uploaded by: <?php echo $row['name'];?><br>
-                Cost: <?php echo $row['cost'];?><br>
-                Uploaded On: <?php echo $row['date']?>
-            </p>
-            <?php 
-            $id = $row['id'];
-            $query = "select * from requests where item_id=$id";
-            $result1 = mysqli_query($conn,$query);
-            if(mysqli_num_rows($result1)>0){
-
-            ?>
-            <button type="button" class="btn btn-danger" disabled>Already Requested</button>
-            
-            <?php }else{?>
-            <button type="button" class="btn btn-success" ><a href="../assets/php/interested.php?item_id=<?php echo $row['id']; ?>&donator_id=<?php echo $row['donator_id']; ?>" name="interested" id="interested" ></a>Interested</button><?php } ?>
-        <hr>
-	</div>
-
-	<?php } ?>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="list-group">
+                    <h3>Price</h3>
+                    <input type="hidden" id="hidden_minimum_price" value="0" />
+                    <input type="hidden" id="hidden_maximum_price" value="800" />
+                    <p id="price_show">0-800</p>
+                    <div id="price_range"></div>
+                </div>
+                <div class="list-group">
+                    <h3>Quality/Condition</h3>
+                    <div style="height: 180px;overflow-y: auto;overflow-x: hidden;">
+                        <?php
+                            $qry = "select distinct(quality) from drafter";
+                            $statement= $connect->prepare($qry);
+                            $statement->execute();
+                            $result = $statement->fetchAll();
+                            foreach ($result as $row) {
+                                ?>
+                                    <div class="list-group-item checkbox">
+                                        <label><input type="checkbox" class="common_selector quality" value="<?php echo $row['quality'] ?>"><?php echo $row['quality'] ?></label>
+                                    </div>
+                                <?php
+                            }
+                        ?>
+                    </div>
+                    <h3>Item</h3>
+                    <div style="height: 100px;overflow-y: auto;overflow-x: hidden;">
+                        <?php
+                            $qry = "select distinct(item) from drafter";
+                            $statement= $connect->prepare($qry);
+                            $statement->execute();
+                            $result = $statement->fetchAll();
+                            foreach ($result as $row) {
+                                ?>
+                                    <div class="list-group-item checkbox">
+                                        <label><input type="checkbox" class="common_selector item" value="<?php echo $row['item'] ?>"><?php echo $row['item'] ?></label>
+                                    </div>
+                                <?php
+                            }
+                        ?>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <br>
+                <div class="row filter_data">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
