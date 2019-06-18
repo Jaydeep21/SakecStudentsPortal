@@ -2,6 +2,12 @@
 
 include('../assets/php/connection_pdo.php');
 include('navbar.php');
+if(!isset($_SESSION['userid'])){
+    echo "<script>
+    alert('Please Login');
+    document.location.href='login.php';
+    </script>";
+}
  ?>
 <!DOCTYPE html>
 <html>
@@ -69,7 +75,7 @@ include('navbar.php');
                 var quality = get_filter('quality');
                 var item = get_filter('item');
                 $.ajax({
-                    url:"fetch_data.php",
+                    url:"../assets/php/fetch_data.php",
                     method:"POST",
                     data:{action:action,minimum_price:minimum_price,maximum_price:maximum_price, quality:quality, item:item },
                     success:function(data){

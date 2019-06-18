@@ -1,6 +1,12 @@
 <?php
 include('navbar.php');
 include('../assets/php/connection.php');
+if(!isset($_SESSION['userid'])){
+    echo "<script>
+    alert('Please Login');
+    document.location.href='login.php';
+    </script>";
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -33,6 +39,7 @@ include('../assets/php/connection.php');
 </head>
 <body>
 	Hello, <?php echo $_SESSION['fname']." ".$_SESSION['lname']?>
+	<br><br>
 	Donations
 	<table>
 					<tr>
@@ -74,13 +81,14 @@ include('../assets/php/connection.php');
 					<?php
 				} ?>
 				</table> 
-				<br><br>
-				Borrowed Items
+				
+				
 				<?php
 				} }
 	?>
-	<br><br>
-		Borrowed Items
+
+	
+		
 		<table>
 			 		<tr>
 			 		<th>Donated By</th>
@@ -93,12 +101,14 @@ include('../assets/php/connection.php');
 		$qry1 = "select * from requests where borrower_id='$user_id'"; 
 		$result2 = mysqli_query($conn,$qry1);
 		while($rows = mysqli_fetch_assoc($result2)) {
-			$item_id = $rows1['item_id'];
+			$item_id = $rows['item_id'];
 			$querys = "select * from drafter where id='$item_id'";
 			$results = mysqli_query($conn,$querys);
 			while ($rows2 = mysqli_fetch_assoc($results)) {
 			 	?>
-
+			 	<br><br>
+			 	Borrowed Items
+				<br><br>
 			 	<tr>
 			 		<td><?php echo $rows2['name'];?></td>
 			 		<td><?php echo $rows2['item'];?></td>

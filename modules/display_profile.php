@@ -1,7 +1,12 @@
 <?php
 
 include('../assets/php/connection.php');
-
+if(!isset($_SESSION['userid'])){
+    echo "<script>
+    alert('Please Login');
+    document.location.href='login.php';
+    </script>";
+}
 $borrower_id = $_GET['borrower_id'];
 $item_id = $_GET['item_id'];
 
