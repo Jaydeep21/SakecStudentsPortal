@@ -1,6 +1,6 @@
 <?php 
 
-include('assets/php/connection_pdo.php');
+include('connection_pdo.php');
 
 if(isset($_POST['action'])){
 
@@ -48,7 +48,7 @@ if($total_row>0){
 		' <button type="button" class="btn btn-danger" disabled>Already Requested</button><hr></div></div></div>'; 
 	}
 	else{
-		$output .=' <button type="button" class="btn btn-success" ><a href="../assets/php/interested.php?item_id="'.$row['id'].'&donator_id='.$row['donator_id'].'" name="interested" id="interested"></a>Interested</button><hr></div></div></div>';
+		$output .='<a href="../assets/php/interested.php?item_id='.$row['id'].'&donator_id='.$row['donator_id'].'" name="interested" id="interested"><button type="button" class="btn btn-success"> Interested</button></a><hr></div></div></div>';
 	}
 	}
 }
