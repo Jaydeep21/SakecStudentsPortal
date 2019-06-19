@@ -1,6 +1,7 @@
 <?php
 
 include('../assets/php/connection.php');
+include('navbar.php');
 if(!isset($_SESSION['userid'])){
     echo "<script>
     alert('Please Login');
