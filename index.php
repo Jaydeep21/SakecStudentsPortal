@@ -1,186 +1,74 @@
-<?php include('modules/navbar.php');?>
+<?php
+include('modules/navbar.php');
+?>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Sakec Student's Portal</title>
+    <title>Home</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Student's Portal</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <style type="text/css">
+            body{
+                height: 100%,
+                margin: 0;
+                overflow-x: hidden;
+            }
+            .landing{
+                background-image: url("https://images.pexels.com/photos/590493/pexels-photo-590493.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=2&h=650&w=940");
+                height: 100%;
+                background-color: black;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                 ;
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+            }
+            /* DEMO-SPECIFIC STYLES */
+             h1 {
+              color: #333;
+              font-family: ;
+              overflow: hidden; /* Ensures the content is not revealed until the animation */
+              border-right: .10em solid black; /* The typwriter cursor */
+              white-space: nowrap; /* Keeps the content on a single line */
+              margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+              letter-spacing: .10em; /* Adjust as needed */
+              animation: 
+                typing 3.5s steps(30, end),
+                blink-caret .5s step-end infinite;
+                font-style: bold;
 
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            }
 
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+            /* The typing effect */
+            @keyframes typing {
+              from { width: 0 }
+              to { width: 100% }
+            }
 
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    
-    <style>
-        #header-featured img{
-            display:block;
-            width:100vw;
-            height:100vh;
-            object-fit:cover;
-            max-width:99vw;
-            overflow-x: hidden;
-            opacity: .8;
-            
-        }
-         body {
-  overflow-x: hidden;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-display:block;
-
-}
-
-.container {
-  position: relative;
-  width: 24px;
-  height: 24px;
-}
-
-.chevron {
-  position: absolute;
-  width: 28px;
-  height: 8px;
-  opacity: 0;
-  transform: scale3d(0.5, 0.5, 0.5);
-  animation: move 3s ease-out infinite;
-}
-
-.chevron:first-child {
-  animation: move 3s ease-out 1s infinite;
-}
-
-.chevron:nth-child(2) {
-  animation: move 3s ease-out 2s infinite;
-}
-
-.chevron:before,
-.chevron:after {
-  content: ' ';
-  position: absolute;
-  top: 0;
-  height: 100%;
-  width: 51%;
-  background: #fff;
-}
-
-.chevron:before {
-  left: 0;
-  transform: skew(0deg, 30deg);
-}
-
-.chevron:after {
-  right: 0;
-  width: 50%;
-  transform: skew(0deg, -30deg);
-}
-
-@keyframes move {
-  25% {
-    opacity: 1;
-
-  }
-  33% {
-    opacity: 1;
-    transform: translateY(30px);
-  }
-  67% {
-    opacity: 1;
-    transform: translateY(40px);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(55px) scale3d(0.5, 0.5, 0.5);
-  }
-}
-.text {
-  display: block;
-  margin-top: 75px;
-  margin-left: -30px;
-  font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
-  font-size: 12px;
-  color: #fff;
-  text-transform: uppercase;
-  white-space: nowrap;
-  opacity: .25;
-  animation: pulse 2s linear alternate infinite;
-}
-
-@keyframes pulse {
-  to {
-    opacity: 1;
-  }
-        }
-.pic{
-	/*width:400px;
-	height:400px;*/
-    background:url("assets/img/Picture.png") no-repeat;
-    background-repeat: no-repeat;
-    background-size:500px 500px;
-}
-.texti{
-	width:450px;
-	height:217px;
-	background:#FFF;
-	opacity:0;
-}
-.pic:hover .texti
-{
-	opacity:0.7;
-	text-align:justify;
-	color:#000000;
-	font-size:15px;
-	font-weight:700;
-	font-family:"Times New Roman", Times, serif;
-	padding:40px;
-    height:325px;
-}
-        /*for button*/
-.row{
-    box-sizing: border-box;
-    position: absolute;
-    top:1200px;
-    left: 0;
-}
-/* Create two equal columns that floats next to each other */
-.column {
-    float: right;
-    position: absolute;
-    top:1200px;
-    left:50vw;  
-}
-
-/* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-    .column {
-        width: 100%;
-    }
-    }
-.post{
+            /* The typewriter cursor effect */
+            @keyframes blink-caret {
+              from, to { border-color: transparent }
+              50% { border-color: black }
+            }
+            .column {
+                position: absolute;
+                left:0vw;  
+            }
+            .column1{
+                float :left;
+                position: absolute;
+                left: 50vw;
+            }
+            .post{
                 width:600px;
                 height:400px;
                 position:relative;
-                text-align: center;
-                                
+                text-align: center;                                
             }
             .post:hover .post-s{
                  width:55vw;
@@ -194,7 +82,7 @@ display:block;
             .post-s{
                 width:0px;
                 height:100vh;
-                background: aquamarine;
+                background: transparent;
                 position:absolute;
                 top:0;
                 display:flex;
@@ -202,6 +90,7 @@ display:block;
                 align-items:center;
                 overflow:hidden;
                 transition:0.7s ease;
+                float: left;
             }
             .post-s h2{
                 color: white;
@@ -209,69 +98,166 @@ display:block;
                 border:6px solid white;
                 padding:10px 30px;
             }
-            .post h5{
-                position:absolute;
-                color: black;
+                
+            section {
+                padding: 60px 0;
+                position: relative;
+                top: 695px
+            }
+
+            section .section-title {
+                text-align: center;
+                color: #007b5e;
+                margin-bottom: 50px;
+                text-transform: uppercase;
+
+            }
+            #footer {
+                
+                 background-color: black;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            #footer h5{
+                padding-left: 10px;
+                border-left: 3px solid #eeeeee;
+                padding-bottom: 6px;
+                margin-bottom: 20px;
+                color:#ffffff;
+            }
+            #footer a {
+                color: #ffffff;
+                text-decoration: none !important;
+                background-color: transparent;
+                -webkit-text-decoration-skip: objects;
+            }
+            #footer ul.social li{
+                padding: 3px 0;
+            }
+            #footer ul.social li a i {
+                margin-right: 5px;
+                font-size:25px;
+                -webkit-transition: .5s all ease;
+                -moz-transition: .5s all ease;
+                transition: .5s all ease;
+            }
+            #footer ul.social li:hover a i {
                 font-size:30px;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-			}
-        .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: #000000; /* Fallback color */
-    background-color: #FFFFFF; /* Black w/ opacity */
-    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
-    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
-    /*box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.19);*/
-    box-shadow: 5px 10px 18px red;
-}
+                margin-top:-10px;
+            }
+            #footer ul.social li a,
+            #footer ul.quick-links li a{
+                color:#ffffff;
+            }
+            #footer ul.social li a:hover{
+                color:#eeeeee;
+            }
+            #footer ul.quick-links li{
+                padding: 3px 0;
+                -webkit-transition: .5s all ease;
+                -moz-transition: .5s all ease;
+                transition: .5s all ease;
+            }
+            #footer ul.quick-links li:hover{
+                padding: 3px 0;
+                margin-left:5px;
+                font-weight:700;
+            }
+            #footer ul.quick-links li a i{
+                margin-right: 5px;
+            }
+            #footer ul.quick-links li:hover a i {
+                font-weight: 700;
+            }
 
-/* Modal Content */
-.modal-content {
-    background-color:#E24E2A;
-    margin: auto;
-    padding: 20px;
-    height:50%;
-    width: 55%;
-    border:5px solid black;
-}
-p{font-size:30px;
-   color: black;
-}
+            @media (max-width:767px){
+                #footer h5 {
+                padding-left: 0;
+                border-left: transparent;
+                padding-bottom: 0px;
+                margin-bottom: 10px;
+            }
+            }
+            
+            .chevron {
+              position: absolute;
+              width: 28px;
+              height: 8px;
+              opacity: 0;
+              transform: scale3d(0.5, 0.5, 0.5);
+              animation: move 3s ease-out infinite;
+            }
+            .chevron:first-child {
+              animation: move 3s ease-out 1s infinite;
+            }
+            .chevron:nth-child(2) {
+              animation: move 3s ease-out 2s infinite;
+            }
+            .chevron:before,
+            .chevron:after {
+              content: ' ';
+              position: absolute;
+              top: 0;
+              height: 100%;
+              width: 51%;
+              background: #fff;
+            }
+            .chevron:before {
+              left: 0;
+              transform: skew(0deg, 30deg);
+            }
+            .chevron:after {
+              right: 0;
+              width: 50%;
+              transform: skew(0deg, -30deg);
+            }
+            @keyframes move {
+              25% {
+                opacity: 1;
+              }
+              33% {
+                opacity: 1;
+                transform: translateY(30px);
+              }
+              67% {
+                opacity: 1;
+                transform: translateY(40px);
+              }
+              100% {
+                opacity: 0;
+                transform: translateY(55px) scale3d(0.5, 0.5, 0.5);
+              }
+            }
+            .text {
+              display: block;
+              margin-top: 75px;
+              margin-left: -30px;
+              font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+              font-size: 12px;
+              color: #fff;
+              text-transform: uppercase;
+              white-space: nowrap;
+              opacity: .25;
+              animation: pulse 2s linear alternate infinite;
+            }
+            @keyframes pulse {
+              to {
+                opacity: 1;
+              }
+            }
 
-/* The Close Button */
-.close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-        
-    </style>
+        </style>
 </head>
 <body>
-    
-   <div id="header-featured" style="background: black;">
-       <img src="assets/img/banner.jpg">
-    
-	 <div class="headingbox" style="position: absolute;top: 250px;left: 250px;">
-         <h1 style="font-size:90px;color:white;text-shadow: 2px 2px darkgrey">Sakec's Student Portal</h1>
+    <div class="landing" >
+        <div class="container p-5">
+            <div class="row p-5">
+                <div class="col-12 p-5">
+                    <h1 class="display-3 d-flex  text-center p-5" >Sakec Student's Portal</h1>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="container menu-link" style="position: absolute;top:80%;left:50%">
           <a href="#pic" id="scroll">
@@ -280,44 +266,84 @@ p{font-size:30px;
           <div class="chevron"></div>
         <span class="text">Scroll down</span></a>
     </div>
-    </div>
-    
-<div class="pic" id="pic" style="position:absolute;left:30%;height:500px">
-  <div class="texti">
-        <div class="head_title">
-            <h2><font size="6px"><center>Vision</center></font></h2>
-        </div>
-        <p><font size="5px" style="color:black" >To create an simple,sustainable  &amp; 
-                            transformable system for borrowing &amp;
-                             donating reusable stationery.
-            </font>
-        </p>
-	</div>
-</div>
-<div>
-<div  class="row">
-			<div class="post">
-				<img src="assets/img/p2.jpg" alt="image not found" style="width:55vw;height:100vh;">
-				<h5>Borrowing is much better than begging,just as lending with interest is much better than stealing.
-				</h5>
-				<div class="post-s">
-					<a href="modules/borrow.php"  style="text-decoration:none"><h2 button id="myBtn" > BORROW</h2></a>
-					
-				</div>
-			</div>
-    </div>
-		<div class="column" >
-			<div class="post">
-                <img src="assets/img/p2.jpg" alt="image not found" style="width:50vw;height:100vh;">
-                    <h5>Giving is not just about making a donation. It is about making a difference.
-                    </h5>
+    <div class="container" id="pic">
+        <div class="row column">
+            <div class="column">
+                <div class="post col-6">
+                    <img src="https://images.pexels.com/photos/50987/money-card-business-credit-card-50987.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=2&h=650&w=940" alt="image not found" style="width:50vw;height:100vh;">
+                    
                     <div class="post-s">
-                        <a href="modules/donate.php" style="text-decoration:none"><h2 button id="myBtn1"  > DONATE</h2></a>
+                        <a href="modules/borrow.php"  style="text-decoration:none"><h2 button id="myBtn" > BORROW</h2></a>
+                        
                     </div>
+                </div>
             </div>
-		</div>
+            <div class="column1">
+                <div class="post col-6  ">
+                    <img src="https://images.pexels.com/photos/271168/pexels-photo-271168.jpeg?cs=srgb&dl=bracelets-cash-crumpled-271168.jpg&fm=jpg" alt="image not found" style="width:50vw;height:100vh;">
+                        
+                        <div class="post-s">
+                            <a href="modules/donate.php" style="text-decoration:none"><h2 button id="myBtn1"  > DONATE</h2></a>
+                        </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <script>
+    <section id="footer">
+        <div class="container">
+            <h5>Quick links</h5>
+            <div class="row text-center text-xs-center text-sm-left text-md-left pl-5">
+
+                <div class="col-xs-12 col-sm-3 col-md-3 pl-5">
+                    
+                    <ul class="list-unstyled quick-links ">
+                        <li><a href="http://localhost/SakecStudentsPortal/index.php"><i class="fa fa-angle-double-right"></i>Home</a></li>
+                        <li><a href="http://localhost/SakecStudentsPortal/index.php?#"><i class="fa fa-angle-double-right"></i>About</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3 pl-5">
+                    <ul class="list-unstyled quick-links">
+                        <li><a href="http://localhost/SakecStudentsPortal/index.php?#"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
+                        <li><a href="http://localhost/SakecStudentsPortal/modules/ebooks.php"><i class="fa fa-angle-double-right"></i>Ebooks</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3 pl-5">
+                    <ul class="list-unstyled quick-links">
+                        <li><a href="http://localhost/SakecStudentsPortal/modules/donate.php"><i class="fa fa-angle-double-right"></i>Donate</a></li>
+                        <li><a href="http://localhost/SakecStudentsPortal/modules/borrow.php"><i class="fa fa-angle-double-right"></i>Borrow</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3 pl-5">
+                    <ul class="list-unstyled quick-links">
+                        <li><a href="http://localhost/SakecStudentsPortal/modules/signup.php"><i class="fa fa-angle-double-right"></i>Signup</a></li>
+                        <li><a href="http://localhost/SakecStudentsPortal/modules/login.php"><i class="fa fa-angle-double-right"></i>Login</a></li>
+                    </ul>
+                </div>
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+                    <ul class="list-unstyled list-inline social text-center">
+                        <li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-facebook"></i></a></li>
+                        <li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-instagram"></i></a></li>
+                        <li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-google-plus"></i></a></li>
+                        <li class="list-inline-item"><a href="javascript:void();" target="_blank"><i class="fa fa-envelope"></i></a></li>
+                    </ul>
+                </div>
+                </hr>
+            </div>  
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+                    <p class="h6"> All  Copyright Reserved.<a class="text-green ml-2" href="http://localhost/sakecstudentsportal/">SakecStudentsPortal</a></p>
+                </div>
+                </hr>
+            </div>  
+        </div>
+    </section>
+    <!-- ./Footer -->
+<script>
         // Select all links with hashes
 $('a[href*="#"]')
   // Remove links that don't actually link to anything
@@ -355,5 +381,6 @@ $('a[href*="#"]')
     }
   });
     </script>
+
 </body>
 </html>
