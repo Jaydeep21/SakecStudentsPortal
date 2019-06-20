@@ -1,7 +1,7 @@
 <?php
 
 include('connection.php');
-
+session_start();
 $itemid = $_GET['item_id'];
 $borrower_id  =$_GET['borrower_id'];
 

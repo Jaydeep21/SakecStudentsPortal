@@ -1,7 +1,7 @@
 <?php 
 
 include('connection_pdo.php');
-
+session_start();
 if(isset($_POST['action'])){
 
 	$query = "select * from drafter where id>0 ";
@@ -32,11 +32,11 @@ if($total_row>0){
 		<img src='.$row['image'].'>
 		</div>
 		<div class="product col-md-8">
-			<h1>'.$row['item'].'</h1>
-			<p>Quality:'.$row['quality'].'</p>
-			<p>Uploaded by:'.$row['name'].'</p>
-			<p>Cost:'.$row['cost'].'</p>
-			<p>Uploaded on: '.$row['date'].'</p>
+			<h1>'.$row['item'].'</h1><br>	
+			<h5>Quality:'.$row['quality'].'</h5>
+			<h5>Uploaded by:'.$row['name'].'</h5>
+			<h5>Cost:'.$row['cost'].'</h5>
+			<h5>Uploaded on: '.$row['date'].'</h5><br>
 	';
 	$qry = "select * from requests where item_id='".$row['id']."'";
 	$statement1 = $connect->prepare($qry);
@@ -48,7 +48,7 @@ if($total_row>0){
 		' <button type="button" class="btn btn-danger" disabled>Already Requested</button><hr></div></div></div>'; 
 	}
 	else{
-		$output .='<a href="../assets/php/interested.php?item_id='.$row['id'].'&donator_id='.$row['donator_id'].'" name="interested" id="interested"><button type="button" class="btn btn-success"> Interested</button></a><hr></div></div></div>';
+		$output .='<a href="../assets/php/interested.php?item_id='.$row['id'].'&donator_id='.$row['donator_id'].'" name="interested" id="interested"><button type="button" class="btn btn-success"> Interested</button></a></div></div></div>';
 	}
 	}
 }
