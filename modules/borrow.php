@@ -1,5 +1,4 @@
 <?php 
-
 include('../assets/php/connection_pdo.php');
 include('navbar.php');
 if(!isset($_SESSION['userid'])){
@@ -12,7 +11,7 @@ if(!isset($_SESSION['userid'])){
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>Borrow</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
@@ -33,6 +32,11 @@ if(!isset($_SESSION['userid'])){
         body{
             display: block;
             overflow-x: hidden;
+            background: #5a7391;
+        }
+        .list-group-item{
+            background:#5a7391;
+            border:none;
         }
         img
         {
@@ -93,7 +97,6 @@ if(!isset($_SESSION['userid'])){
             $('.common_selector').click(function(){
                 filter_data();
             });
-
             $('#price_range').slider({
                 range:true,
                 min:0,
@@ -114,14 +117,34 @@ if(!isset($_SESSION['userid'])){
     <div class="container">
         <div class="row">
             <div class="col-md-3">
+                <br><br>
                 <div class="list-group">
                     <h3>Price</h3>
                     <input type="hidden" id="hidden_minimum_price" value="0" />
                     <input type="hidden" id="hidden_maximum_price" value="800" />
-                    <p id="price_show">0-800</p>
+                    <h5 id="price_show">0-800</h5>
                     <div id="price_range"></div>
                 </div>
+
+                <br><br>
+
                 <div class="list-group">
+                    <h3>Item</h3>
+                    <div style="height: 90px;overflow-y: auto;overflow-x: hidden;">
+                        <?php
+                            $qry = "select distinct(item) from drafter";
+                            $statement= $connect->prepare($qry);
+                            $statement->execute();
+                            $result = $statement->fetchAll();
+                            foreach ($result as $row) {
+                                ?>
+                                    <div class="list-group-item checkbox">
+                                        <label><h5><input type="checkbox" class="common_selector item" value="<?php echo $row['item'] ?>"><?php echo $row['item'] ?></h5></label>
+                                    </div>
+                                <?php
+                            }
+                        ?>
+                    </div>
                     <h3>Quality/Condition</h3>
                     <div style="height: 180px;overflow-y: auto;overflow-x: hidden;">
                         <?php
@@ -132,28 +155,13 @@ if(!isset($_SESSION['userid'])){
                             foreach ($result as $row) {
                                 ?>
                                     <div class="list-group-item checkbox">
-                                        <label><input type="checkbox" class="common_selector quality" value="<?php echo $row['quality'] ?>"><?php echo $row['quality'] ?></label>
+                                        <label><h5><input type="checkbox" class="common_selector quality" value="<?php echo $row['quality'] ?>"><?php echo $row['quality'] ?></h5></label>
                                     </div>
                                 <?php
                             }
                         ?>
                     </div>
-                    <h3>Item</h3>
-                    <div style="height: 100px;overflow-y: auto;overflow-x: hidden;">
-                        <?php
-                            $qry = "select distinct(item) from drafter";
-                            $statement= $connect->prepare($qry);
-                            $statement->execute();
-                            $result = $statement->fetchAll();
-                            foreach ($result as $row) {
-                                ?>
-                                    <div class="list-group-item checkbox">
-                                        <label><input type="checkbox" class="common_selector item" value="<?php echo $row['item'] ?>"><?php echo $row['item'] ?></label>
-                                    </div>
-                                <?php
-                            }
-                        ?>
-                    </div>
+                    
                 </div>
             </div>
             <div class="col-md-9">

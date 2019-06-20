@@ -14,7 +14,7 @@ include('navbar.php');
        
     </head>
 	<body>
-        <div class="loginbox" style="width: 320px;height: 775px;top:70%">
+        <div class="loginbox" style="width: 320px;height: 1000px;top:100%">
             <h1>Sign up</h1>
             <form action="../assets/php/signup.php" method="post" onsubmit="return checkForm(this);">
                 <p>First Name:</p>
